@@ -32,6 +32,13 @@ export const devLogger = winston.createLogger({
                 )
             }
         ),
+        new transports.File(
+            {
+                filename: './errors.log',
+                level: 'error',
+                format: winston.format.simple()
+            }
+        )
     ]
 })
 
