@@ -79,9 +79,13 @@ app.use(passport.session());
 
 app.use(addLogger);
 app.get("/loggerTest", (req, res) => {
-  req.logger.debug("Prueba de log level warn --> en developer mode");
-  req.logger.info("Prueba de log level info --> en production mode");
-  res.send("PRUEBA DE LOGGER EXITOSA!");
+  if (config.enviroment === 'DEV') {
+    console.log("Correct log test from Debug level in Development Mode");
+    res.send("PRUEBA DE LOGGER EXITOSA!");
+  } else {
+    console.log("Correct log test from Info level in Production Mode");
+    res.send("PRUEBA DE LOGGER EXITOSA!");
+  }
 });
 
 // Ruta main
